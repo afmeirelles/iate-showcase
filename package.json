@@ -1,0 +1,58 @@
+{
+  "name": "iate-showcase",
+  "version": "1.0.0",
+  "description": "Showcasing IATE features - repleceable translators and adapters + testability",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "lint": "lynt src/**/*.js",
+    "test": "npm run lint; nyc --reporter=text --reporter=html mocha src/**/test/*.js",
+    "watch-test": "npm test; chokidar src/**/*.js src/**/test/*.js -i 'coverage' -c 'npm test' --silent"
+  },
+  "dependencies": {
+    "ajv": "6.11.0",
+    "body-parser": "1.19.0",
+    "cors": "2.8.5",
+    "csv-parse": "4.8.5",
+    "dotenv": "8.2.0",
+    "express": "4.17.1",
+    "gists": "2.0.0",
+    "iate-components": "0.5.0",
+    "lodash": "4.17.15",
+    "moment": "2.24.0"
+  },
+  "devDependencies": {
+    "chokidar-cli": "2.1.0",
+    "expect.js": "0.3.1",
+    "lynt": "0.5.5",
+    "mocha": "7.0.1",
+    "nyc": "15.0.0",
+    "sinon": "8.1.1"
+  },
+  "engines": {
+    "node": "10"
+  },
+  "nyc": {
+    "exclude": [
+      "**/test/*.js"
+    ],
+    "check-coverage": true,
+    "branches": 100,
+    "lines": 100,
+    "functions": 100,
+    "statements": 100
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afmeirelles/iate-showcase.git"
+  },
+  "keywords": [
+    "iate"
+  ],
+  "author": "André Meirelles - https://github.com/afmeirelles",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/afmeirelles/iate-showcase/issues"
+  },
+  "homepage": "https://github.com/afmeirelles/iate-showcase#readme"
+}
