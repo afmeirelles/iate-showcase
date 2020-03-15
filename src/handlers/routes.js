@@ -1,6 +1,7 @@
+const users = require('../users/translator')
 
 module.exports = app => {
     // checks if API is online
     app.get('/', (req, res) => res.status(200).json({ status: 'ok' }))
-    // app.post('/login', users.login)
+    app.post('/login', users.login)
 }

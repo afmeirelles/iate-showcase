@@ -7,7 +7,8 @@
     "start": "node index.js",
     "lint": "lynt src/**/*.js",
     "test": "npm run lint; nyc --reporter=text --reporter=html mocha src/**/test/*.js",
-    "watch-test": "npm test; chokidar src/**/*.js src/**/test/*.js -i 'coverage' -c 'npm test' --silent"
+    "watch-test": "npm test; chokidar src/**/*.js src/**/test/*.js -i 'coverage' -c 'npm test' --silent",
+    "init_db": "node db/init.js"
   },
   "dependencies": {
     "ajv": "6.11.0",
@@ -16,10 +17,14 @@
     "csv-parse": "4.8.5",
     "dotenv": "8.2.0",
     "express": "4.17.1",
+    "express-graphql": "^0.9.0",
     "gists": "2.0.0",
+    "graphql": "^14.6.0",
     "iate-components": "0.5.0",
+    "jsonwebtoken": "^8.5.1",
     "lodash": "4.17.15",
-    "moment": "2.24.0"
+    "moment": "2.24.0",
+    "mongodb": "3.5.5"
   },
   "devDependencies": {
     "chokidar-cli": "2.1.0",
@@ -34,7 +39,8 @@
   },
   "nyc": {
     "exclude": [
-      "**/test/*.js"
+      "**/test/*.js",
+      "src/components"
     ],
     "check-coverage": true,
     "branches": 100,

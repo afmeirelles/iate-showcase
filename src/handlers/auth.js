@@ -1,6 +1,7 @@
 const _ = require('lodash')
 const jwt = require('jsonwebtoken')
 const { UNAUTHORIZED, toHttp } = require('iate-components').errors
+const configs = require('../components/configs')
 
 const publicPaths = [
     '/',
@@ -17,7 +18,7 @@ module.exports = (req, res, next) => {
     if (_.includes(publicPaths, req.path)) return next()
     if (!req.token) return toHttp(new UNAUTHORIZED(), res)
     try {
-        const { client_id, email, role } = jwt.verify(req.token, 'notASecret')
+        const { client_id, email, role } = jwt.verify(req.token, configs('JWT_SECRET'))
         req.user = { id: client_id, email, role }
     } catch (error) {
         toHttp(new UNAUTHORIZED(error.message), res)
