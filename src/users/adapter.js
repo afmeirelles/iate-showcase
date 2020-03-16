@@ -19,6 +19,25 @@ const adapter = {
     generateJWT: data => {
         return jwt.sign(data, JWT_SECRET, { expiresIn: TOKEN_EXPIRATION_IN || '7d' })
     },
+    getById: async id => {
+        const db = await mongo.connect()
+        return db
+            .collection(COLLECTION)
+            .findOne(mongo.ObjectId(id))
+    },
+    getAll: async id => {
+        const db = await mongo.connect()
+        return db
+            .collection(COLLECTION)
+            .find()
+            .toArray()
+    },
+    create: async user => {
+        const db = await mongo.connect()
+        return db
+            .collection(COLLECTION)
+            .insertOne(user)
+    }
 }
 
 module.exports = adapter

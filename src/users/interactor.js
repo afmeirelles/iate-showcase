@@ -7,6 +7,9 @@ const interactor = {
         if (!user) throw new UNAUTHORIZED()
         return entity.generateJWT(user)
     },
+    getById: entity.getById,
+    getAll: entity.getAll,
+    create: entity.create,
 }
 
 module.exports = interactor

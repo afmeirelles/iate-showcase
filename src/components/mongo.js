@@ -1,4 +1,5 @@
 const MongoClient = require('mongodb').MongoClient
+const ObjectId = require('mongodb').ObjectID
 const configs = require('./configs')
 
 const url = configs('MONGO_HOST')
@@ -26,4 +27,4 @@ const connect = async () => {
     }
 }
 
-module.exports = { connect }
+module.exports = { connect, ObjectId }

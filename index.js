@@ -1,10 +1,9 @@
-const http = require('http')
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 
-// middleware handlers
-const routes = require('./src/handlers/routes')
+// GraphQL schemas
+const schemas = require('./src/handlers/schemas')
 
 // express server
 const app = express()
@@ -13,9 +12,10 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cors())
+// TODO: find a GraphQL-compliant way to authenticate requests
 
-// incorporate routes to express server
-routes(app)
+// adds graphql middleware and schemas to server
+schemas(app)
 
 const port = 5000
 
