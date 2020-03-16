@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 const configs = require('../components/configs')
 const mongo = require('../components/mongo')
 
-const JWT_SECRET = configs('JWT_SECRET')
+const JWT_SECRET = configs('JWT_SECRET') || 'defaultSecret'
 const TOKEN_EXPIRATION_IN = configs('TOKEN_EXPIRATION_IN')
 const COLLECTION = 'users'
 
